@@ -1,7 +1,8 @@
 ## Listener Rule Extension
 
 This module provides an [ECS Service Extension](https://www.npmjs.com/package/@aws-cdk-containers/ecs-service-extensions)
-that registers your service with a load balancer by way of listener rules.
+that registers your service with an application load balancer by way of listener
+rules.
 
 Rules added via this extension are given an automatically numbered priority by
 default. The automatic rule priority numbering starts at `priorityStart` and
@@ -47,3 +48,8 @@ serviceDescription.add(new HttpLoadBalancerListenerRules({
   ],
 }));
 ```
+
+## Note on JSII Support
+
+This module won't support JSII until ECS Service Extensions introduces support
+for JSII.
