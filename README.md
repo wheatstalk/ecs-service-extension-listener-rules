@@ -4,9 +4,10 @@ This module provides an [ECS Service Extension](https://www.npmjs.com/package/@a
 that registers your service with an application load balancer by way of listener
 rules.
 
-Rules added via this extension are given an automatically numbered priority by
-default. The automatic rule priority numbering starts at `priorityStart` and
-increases by `priorityStep` for each generated rule priority.
+Rules added via this extension are automatically prioritized in the load balancer
+by default. The automatic prioritization starts at a number (default: 1) and
+increases by a step value (default: 5) for each rule added that doesn't have an
+explicit priority.
 
 ## Get Started
 
