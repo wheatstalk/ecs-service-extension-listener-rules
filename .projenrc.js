@@ -22,6 +22,5 @@ const project = new TypeScriptProject({
 });
 
 project.gitignore.exclude('.idea', 'cdk.out');
-project.addBuildCommand('yarn docgen');
 
 project.synth();
