@@ -15,12 +15,13 @@
     "projen:upgrade": "yarn upgrade -L projen && CI=\"\" yarn projen",
     "compile": "tsc",
     "watch": "tsc -w",
-    "build": "yarn run test && yarn run compile && yarn run package",
+    "build": "yarn run test && yarn run compile && yarn run package && yarn docgen",
     "package": "rm -fr dist && mkdir -p dist/js && yarn pack && mv *.tgz dist/js/",
     "test": "rm -fr lib/ && jest --passWithNoTests --updateSnapshot && yarn run eslint",
     "test:watch": "jest --watch",
     "test:update": "jest --updateSnapshot",
-    "eslint": "eslint --ext .ts --fix src test"
+    "eslint": "eslint --ext .ts --fix src test",
+    "docgen": "typedoc --out docs/"
   },
   "author": {
     "name": "Josh Kellendonk",
@@ -42,6 +43,7 @@
     "projen": "^0.3.141",
     "standard-version": "^9.0.0",
     "ts-jest": "^26.1.0",
+    "typedoc": "^0.17.8",
     "typescript": "^3.9.5"
   },
   "peerDependencies": {},
@@ -114,6 +116,11 @@
       "desc": "Runs eslint against the codebase",
       "command": "yarn run eslint",
       "category": 1
+    },
+    "docgen": {
+      "desc": "Generate TypeScript API reference docs/",
+      "command": "yarn run docgen",
+      "category": 2
     }
   },
   "version": "0.1.0",

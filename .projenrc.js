@@ -18,8 +18,10 @@ const project = new TypeScriptProject({
         '@aws-cdk/assert@^1.71.0',
         '@aws-cdk/aws-ec2@^1.71.0',
     ],
+    docgen: true,
 });
 
 project.gitignore.exclude('.idea', 'cdk.out');
+project.addBuildCommand('yarn docgen');
 
 project.synth();
