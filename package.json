@@ -21,7 +21,7 @@
     "test:watch": "jest --watch",
     "test:update": "jest --updateSnapshot",
     "eslint": "eslint --ext .ts --fix src test",
-    "docgen": "typedoc --out docs && touch docs/.nojekyll"
+    "docgen": "typedoc --out docs src/index.ts && touch docs/.nojekyll"
   },
   "author": {
     "name": "Josh Kellendonk",
@@ -43,7 +43,7 @@
     "projen": "^0.3.141",
     "standard-version": "^9.0.0",
     "ts-jest": "^26.1.0",
-    "typedoc": "^0.17.8",
+    "typedoc": "beta",
     "typescript": "^3.9.5"
   },
   "peerDependencies": {},

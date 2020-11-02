@@ -15,7 +15,7 @@ const project = new TypeScriptProject({
         '@aws-cdk/core@^1.71.0',
     ],
     devDeps: [
-        'typedoc@^0.17.8',
+        'typedoc@beta',
         '@aws-cdk/assert@^1.71.0',
         '@aws-cdk/aws-ec2@^1.71.0',
     ],
@@ -23,7 +23,7 @@ const project = new TypeScriptProject({
 
 project.gitignore.exclude('.idea', 'cdk.out');
 
-project.addScript('docgen', 'typedoc --out docs && touch docs/.nojekyll', {
+project.addScript('docgen', 'typedoc --out docs src/index.ts && touch docs/.nojekyll', {
     startCategory: StartEntryCategory.RELEASE,
 });
 
