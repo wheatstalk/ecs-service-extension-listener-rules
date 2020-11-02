@@ -70,6 +70,23 @@ export interface ListenerRule {
 }
 
 /**
+ * Options or adding rules
+ */
+export interface RuleOptions {
+  /**
+   * Priority for this rule
+   * @default - automatically set
+   */
+  priority?: number;
+}
+
+/**
+ * Options for adding a redirect rule.
+ */
+export interface RedirectRuleOptions extends RuleOptions, alb.RedirectOptions {
+}
+
+/**
  * Exposes the service from a load balancer listener via the listener rules
  * that you provide.
  */
@@ -78,12 +95,12 @@ export class ListenerRulesExtension extends ServiceExtension {
    * Create a load balancer rule matching on a host header that forwards to the
    * service.
    */
-  static hostHeader(hostHeader: string, priority?: number): ListenerRule {
+  static hostHeader(hostHeader: string, options?: RuleOptions): ListenerRule {
     return {
       conditions: [
         alb.ListenerCondition.hostHeaders([hostHeader]),
       ],
-      priority,
+      priority: options?.priority,
     };
   }
 
@@ -91,12 +108,12 @@ export class ListenerRulesExtension extends ServiceExtension {
    * Create a load balancer rule matching on a path pattern that forwards to
    * the service.
    */
-  static pathPattern(pathPattern: string, priority?: number): ListenerRule {
+  static pathPattern(pathPattern: string, options?: RuleOptions): ListenerRule {
     return {
       conditions: [
         alb.ListenerCondition.pathPatterns([pathPattern]),
       ],
-      priority,
+      priority: options?.priority,
     };
   }
 
@@ -104,10 +121,10 @@ export class ListenerRulesExtension extends ServiceExtension {
    * Create a load balancer rule matching on a host header that redirects via
    * HTTP to another URL.
    */
-  static hostHeaderRedirect(hostHeader: string, redirect: alb.RedirectOptions, priority?: number): ListenerRule {
+  static hostHeaderRedirect(hostHeader: string, options: RedirectRuleOptions): ListenerRule {
     return {
-      ...ListenerRulesExtension.hostHeader(hostHeader, priority),
-      action: alb.ListenerAction.redirect(redirect),
+      ...ListenerRulesExtension.hostHeader(hostHeader, options),
+      action: alb.ListenerAction.redirect(options),
     };
   }
 
@@ -115,10 +132,10 @@ export class ListenerRulesExtension extends ServiceExtension {
    * Create a load balancer rule matching on a path pattern that redirects via
    * HTTP to another URL.
    */
-  static pathPatternRedirect(pathPattern: string, redirect: alb.RedirectOptions, priority?: number): ListenerRule {
+  static pathPatternRedirect(pathPattern: string, options: RedirectRuleOptions): ListenerRule {
     return {
-      ...ListenerRulesExtension.pathPattern(pathPattern, priority),
-      action: alb.ListenerAction.redirect(redirect),
+      ...ListenerRulesExtension.pathPattern(pathPattern, options),
+      action: alb.ListenerAction.redirect(options),
     };
   }
 
