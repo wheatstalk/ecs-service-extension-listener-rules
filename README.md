@@ -1,10 +1,24 @@
 ## Listener Rule Extension
 
-This module provides an [ECS Service Extension](https://www.npmjs.com/package/@aws-cdk-containers/ecs-service-extensions) that registers your service with a load balancer by way of listener rules.
+This module provides an [ECS Service Extension](https://www.npmjs.com/package/@aws-cdk-containers/ecs-service-extensions)
+that registers your service with a load balancer by way of listener rules.
 
 Rules added via this extension are given an automatically numbered priority by
 default. The automatic rule priority numbering starts at `priorityStart` and
 increases by `priorityStep` for each generated rule priority.
+
+## Get Started
+
+To add this module to your project, install `@wheatstalk/ecs-service-extension-listener-rules`
+with either `yarn` or `npm`:
+
+```bash
+# Yarn
+yarn install @wheatstalk/ecs-service-extension-listener-rules
+
+# NPM install
+npm install @wheatstalk/ecs-service-extension-listener-rules
+```
 
 ## Example Usage
 
