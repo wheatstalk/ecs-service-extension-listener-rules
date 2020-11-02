@@ -5,7 +5,9 @@ const project = new TypeScriptProject({
     authorName: 'Josh Kellendonk',
     name: '@wheatstalk/ecs-service-extension-listener-rules',
     repository: 'https://github.com/wheatstalk/ecs-service-extension-listener-rules.git',
-    releaseEveryCommit: false,
+    releaseEveryCommit: true,
+    releaseToNpm: true,
+
     deps: [
         '@aws-cdk-containers/ecs-service-extensions@^1.71.0',
         '@aws-cdk/aws-ecs@^1.71.0',
