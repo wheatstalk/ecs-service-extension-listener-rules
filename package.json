@@ -21,7 +21,7 @@
     "test:watch": "jest --watch",
     "test:update": "jest --updateSnapshot",
     "eslint": "eslint --ext .ts --fix src test",
-    "docgen": "typedoc --out docs/"
+    "docgen": "typedoc --out docs && touch docs/.nojekyll"
   },
   "author": {
     "name": "Josh Kellendonk",
@@ -116,11 +116,6 @@
       "desc": "Runs eslint against the codebase",
       "command": "yarn run eslint",
       "category": 1
-    },
-    "docgen": {
-      "desc": "Generate TypeScript API reference docs/",
-      "command": "yarn run docgen",
-      "category": 2
     }
   },
   "version": "0.1.0",

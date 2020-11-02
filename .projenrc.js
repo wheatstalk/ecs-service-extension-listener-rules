@@ -1,4 +1,4 @@
-const { TypeScriptProject } = require('projen');
+const { TypeScriptProject, StartEntryCategory } = require('projen');
 
 const project = new TypeScriptProject({
     authorAddress: 'joshkellendonk@gmail.com',
@@ -15,12 +15,16 @@ const project = new TypeScriptProject({
         '@aws-cdk/core@^1.71.0',
     ],
     devDeps: [
+        'typedoc@^0.17.8',
         '@aws-cdk/assert@^1.71.0',
         '@aws-cdk/aws-ec2@^1.71.0',
     ],
-    docgen: true,
 });
 
 project.gitignore.exclude('.idea', 'cdk.out');
+
+project.addScript('docgen', 'typedoc --out docs && touch docs/.nojekyll', {
+    startCategory: StartEntryCategory.RELEASE,
+});
 
 project.synth();
