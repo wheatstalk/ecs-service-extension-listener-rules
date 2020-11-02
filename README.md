@@ -1,12 +1,16 @@
-## Adding listener rules to an existing load balancer
+## Listener Rule Extension
 
-You may expose your service by adding listener rules to an existing Application
-Load Balancer listener. To accomplish this, you must set up your service
-description and then add a new `HttpLoadBalancerListenerRules`.
+This module provides an [ECS Service Extension](https://www.npmjs.com/package/@aws-cdk-containers/ecs-service-extensions) that registers your service with a load balancer by way of listener rules.
 
 Rules added via this extension are given an automatically numbered priority by
 default. The automatic rule priority numbering starts at `priorityStart` and
 increases by `priorityStep` for each generated rule priority.
+
+## Example Usage
+
+You may expose your service by adding listener rules to an existing Application
+Load Balancer listener. To accomplish this, you must set up your service
+description and then add a new `HttpLoadBalancerListenerRules`:
 
 ```ts
 serviceDescription.add(new HttpLoadBalancerListenerRules({
