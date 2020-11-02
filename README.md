@@ -30,8 +30,6 @@ description and then add a new `ListenerRulesExtension`:
 ```ts
 serviceDescription.add(new ListenerRulesExtension({
   listener, // Your IApplicationListener
-  priorityStart: 10000, // Starting priority number (default is `1`)
-  priorityStep: 5, // Step size for automatic numbering (default is `5`)
   rules: [
     // Serve requests for 'www.example.com'
     ListenerRulesExtension.hostHeader('www.example.com'),
@@ -45,6 +43,30 @@ serviceDescription.add(new ListenerRulesExtension({
     ListenerRulesExtension.pathPatternRedirect('/redirect', {
       host: 'aws.amazon.com',
     }),
+  ],
+}));
+```
+
+## Choosing Priorities
+
+If you have specific requirements for ALB priorities, you may set the rule
+priorities in either of two ways:
+
+* Provide a `priorityStart` to the extension props
+* Provide a `priority` parameter for a specific rule
+
+**Priority examples**
+
+```ts
+serviceDescription.add(new ListenerRulesExtension({
+  listener, // Your IApplicationListener
+  priorityStart: 10000, // Starting priority number (default is `1`)
+  priorityStep: 5, // Step size for automatic numbering (default is `5`)
+  rules: [
+    // Serve requests for 'www.example.com' - will be priority 10000
+    ListenerRulesExtension.hostHeader('www.example.com'),
+    // Register the wildcard host header so that has the priority 39999
+    ListenerRulesExtension.hostHeader('*.example.com', 39999),
   ],
 }));
 ```
