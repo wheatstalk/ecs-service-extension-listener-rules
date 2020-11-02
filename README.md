@@ -15,7 +15,7 @@ with either `yarn` or `npm`:
 
 ```bash
 # Yarn
-yarn install @wheatstalk/ecs-service-extension-listener-rules
+yarn add @wheatstalk/ecs-service-extension-listener-rules
 
 # NPM install
 npm install @wheatstalk/ecs-service-extension-listener-rules
