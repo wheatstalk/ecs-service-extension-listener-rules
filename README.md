@@ -25,7 +25,7 @@ npm install @wheatstalk/ecs-service-extension-listener-rules
 
 You may expose your service by adding listener rules to an existing Application
 Load Balancer listener. To accomplish this, you must set up your service
-description and then add a new `HttpLoadBalancerListenerRules`:
+description and then add a new `ListenerRulesExtension`:
 
 ```ts
 serviceDescription.add(new ListenerRulesExtension({
