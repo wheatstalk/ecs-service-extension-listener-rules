@@ -28,7 +28,7 @@ Load Balancer listener. To accomplish this, you must set up your service
 description and then add a new `HttpLoadBalancerListenerRules`:
 
 ```ts
-serviceDescription.add(new HttpLoadBalancerListenerRules({
+serviceDescription.add(new ListenerRulesExtension({
   listener, // Your IApplicationListener
   priorityStart: 10000, // Starting priority number (default is `1`)
   priorityStep: 5, // Step size for automatic numbering (default is `5`)
