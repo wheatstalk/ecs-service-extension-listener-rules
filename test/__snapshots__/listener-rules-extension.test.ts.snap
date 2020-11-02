@@ -1,0 +1,840 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`listener-rules-extension snapshot test 1`] = `
+Object {
+  "Outputs": Object {
+    "Error404Endpoint": Object {
+      "Value": Object {
+        "Fn::Sub": Array [
+          "http://\${AlbDns}",
+          Object {
+            "AlbDns": Object {
+              "Fn::GetAtt": Array [
+                "Alb16C2F182",
+                "DNSName",
+              ],
+            },
+          },
+        ],
+      },
+    },
+    "NameEndpoint1": Object {
+      "Value": Object {
+        "Fn::Sub": Array [
+          "http://\${AlbDns}/name1",
+          Object {
+            "AlbDns": Object {
+              "Fn::GetAtt": Array [
+                "Alb16C2F182",
+                "DNSName",
+              ],
+            },
+          },
+        ],
+      },
+    },
+    "NameEndpoint2": Object {
+      "Value": Object {
+        "Fn::Sub": Array [
+          "http://\${AlbDns}/name2",
+          Object {
+            "AlbDns": Object {
+              "Fn::GetAtt": Array [
+                "Alb16C2F182",
+                "DNSName",
+              ],
+            },
+          },
+        ],
+      },
+    },
+    "RedirectToAmazon": Object {
+      "Value": Object {
+        "Fn::Sub": Array [
+          "http://\${AlbDns}/redirect",
+          Object {
+            "AlbDns": Object {
+              "Fn::GetAtt": Array [
+                "Alb16C2F182",
+                "DNSName",
+              ],
+            },
+          },
+        ],
+      },
+    },
+  },
+  "Resources": Object {
+    "Alb16C2F182": Object {
+      "DependsOn": Array [
+        "EnvironmentenvironmentvpcPublicSubnet1DefaultRoute4171CB3F",
+        "EnvironmentenvironmentvpcPublicSubnet2DefaultRouteCA3995A5",
+      ],
+      "Properties": Object {
+        "LoadBalancerAttributes": Array [
+          Object {
+            "Key": "deletion_protection.enabled",
+            "Value": "false",
+          },
+        ],
+        "Scheme": "internet-facing",
+        "SecurityGroups": Array [
+          Object {
+            "Fn::GetAtt": Array [
+              "AlbSecurityGroup580F65A6",
+              "GroupId",
+            ],
+          },
+        ],
+        "Subnets": Array [
+          Object {
+            "Ref": "EnvironmentenvironmentvpcPublicSubnet1Subnet90FA3050",
+          },
+          Object {
+            "Ref": "EnvironmentenvironmentvpcPublicSubnet2Subnet80565813",
+          },
+        ],
+        "Type": "application",
+      },
+      "Type": "AWS::ElasticLoadBalancingV2::LoadBalancer",
+    },
+    "AlbSecurityGroup580F65A6": Object {
+      "Properties": Object {
+        "GroupDescription": "Automatically created Security Group for ELB httploadbalancerlistenerrulesintegAlb63F39206",
+        "SecurityGroupIngress": Array [
+          Object {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "Allow from anyone on port 80",
+            "FromPort": 80,
+            "IpProtocol": "tcp",
+            "ToPort": 80,
+          },
+        ],
+        "VpcId": Object {
+          "Ref": "Environmentenvironmentvpc02635CAD",
+        },
+      },
+      "Type": "AWS::EC2::SecurityGroup",
+    },
+    "AlbSecurityGrouptohttploadbalancerlistenerrulesintegServiceserviceSecurityGroupF94CF5DF80A7A9B4AA": Object {
+      "Properties": Object {
+        "Description": "Load balancer to target",
+        "DestinationSecurityGroupId": Object {
+          "Fn::GetAtt": Array [
+            "ServiceserviceSecurityGroup1915660F",
+            "GroupId",
+          ],
+        },
+        "FromPort": 80,
+        "GroupId": Object {
+          "Fn::GetAtt": Array [
+            "AlbSecurityGroup580F65A6",
+            "GroupId",
+          ],
+        },
+        "IpProtocol": "tcp",
+        "ToPort": 80,
+      },
+      "Type": "AWS::EC2::SecurityGroupEgress",
+    },
+    "AlbSecurityGrouptohttploadbalancerlistenerrulesintegServiceserviceSecurityGroupF94CF5DFALLPORTS5D39F311": Object {
+      "Properties": Object {
+        "Description": "to httploadbalancerlistenerrulesintegServiceserviceSecurityGroupF94CF5DF:ALL PORTS",
+        "DestinationSecurityGroupId": Object {
+          "Fn::GetAtt": Array [
+            "ServiceserviceSecurityGroup1915660F",
+            "GroupId",
+          ],
+        },
+        "FromPort": 0,
+        "GroupId": Object {
+          "Fn::GetAtt": Array [
+            "AlbSecurityGroup580F65A6",
+            "GroupId",
+          ],
+        },
+        "IpProtocol": "tcp",
+        "ToPort": 65535,
+      },
+      "Type": "AWS::EC2::SecurityGroupEgress",
+    },
+    "AlbhttpF4DDFFB4": Object {
+      "Properties": Object {
+        "DefaultActions": Array [
+          Object {
+            "FixedResponseConfig": Object {
+              "ContentType": "text/plain",
+              "MessageBody": "404 Not Found",
+              "StatusCode": "404",
+            },
+            "Type": "fixed-response",
+          },
+        ],
+        "LoadBalancerArn": Object {
+          "Ref": "Alb16C2F182",
+        },
+        "Port": 80,
+        "Protocol": "HTTP",
+      },
+      "Type": "AWS::ElasticLoadBalancingV2::Listener",
+    },
+    "EnvironmentenvironmentclusterA67A8E69": Object {
+      "Type": "AWS::ECS::Cluster",
+    },
+    "Environmentenvironmentvpc02635CAD": Object {
+      "Properties": Object {
+        "CidrBlock": "10.0.0.0/16",
+        "EnableDnsHostnames": true,
+        "EnableDnsSupport": true,
+        "InstanceTenancy": "default",
+        "Tags": Array [
+          Object {
+            "Key": "Name",
+            "Value": "http-load-balancer-listener-rules-integ/Environment-environment-vpc",
+          },
+        ],
+      },
+      "Type": "AWS::EC2::VPC",
+    },
+    "EnvironmentenvironmentvpcIGWD3352EF8": Object {
+      "Properties": Object {
+        "Tags": Array [
+          Object {
+            "Key": "Name",
+            "Value": "http-load-balancer-listener-rules-integ/Environment-environment-vpc",
+          },
+        ],
+      },
+      "Type": "AWS::EC2::InternetGateway",
+    },
+    "EnvironmentenvironmentvpcPrivateSubnet1DefaultRoute1AFA55BA": Object {
+      "Properties": Object {
+        "DestinationCidrBlock": "0.0.0.0/0",
+        "NatGatewayId": Object {
+          "Ref": "EnvironmentenvironmentvpcPublicSubnet1NATGateway65E8E64D",
+        },
+        "RouteTableId": Object {
+          "Ref": "EnvironmentenvironmentvpcPrivateSubnet1RouteTable2FAF7412",
+        },
+      },
+      "Type": "AWS::EC2::Route",
+    },
+    "EnvironmentenvironmentvpcPrivateSubnet1RouteTable2FAF7412": Object {
+      "Properties": Object {
+        "Tags": Array [
+          Object {
+            "Key": "Name",
+            "Value": "http-load-balancer-listener-rules-integ/Environment-environment-vpc/PrivateSubnet1",
+          },
+        ],
+        "VpcId": Object {
+          "Ref": "Environmentenvironmentvpc02635CAD",
+        },
+      },
+      "Type": "AWS::EC2::RouteTable",
+    },
+    "EnvironmentenvironmentvpcPrivateSubnet1RouteTableAssociation46A426C7": Object {
+      "Properties": Object {
+        "RouteTableId": Object {
+          "Ref": "EnvironmentenvironmentvpcPrivateSubnet1RouteTable2FAF7412",
+        },
+        "SubnetId": Object {
+          "Ref": "EnvironmentenvironmentvpcPrivateSubnet1SubnetE66B59C1",
+        },
+      },
+      "Type": "AWS::EC2::SubnetRouteTableAssociation",
+    },
+    "EnvironmentenvironmentvpcPrivateSubnet1SubnetE66B59C1": Object {
+      "Properties": Object {
+        "AvailabilityZone": Object {
+          "Fn::Select": Array [
+            0,
+            Object {
+              "Fn::GetAZs": "",
+            },
+          ],
+        },
+        "CidrBlock": "10.0.128.0/18",
+        "MapPublicIpOnLaunch": false,
+        "Tags": Array [
+          Object {
+            "Key": "aws-cdk:subnet-name",
+            "Value": "Private",
+          },
+          Object {
+            "Key": "aws-cdk:subnet-type",
+            "Value": "Private",
+          },
+          Object {
+            "Key": "Name",
+            "Value": "http-load-balancer-listener-rules-integ/Environment-environment-vpc/PrivateSubnet1",
+          },
+        ],
+        "VpcId": Object {
+          "Ref": "Environmentenvironmentvpc02635CAD",
+        },
+      },
+      "Type": "AWS::EC2::Subnet",
+    },
+    "EnvironmentenvironmentvpcPrivateSubnet2DefaultRouteF5A23DA3": Object {
+      "Properties": Object {
+        "DestinationCidrBlock": "0.0.0.0/0",
+        "NatGatewayId": Object {
+          "Ref": "EnvironmentenvironmentvpcPublicSubnet2NATGatewayEDDF81A3",
+        },
+        "RouteTableId": Object {
+          "Ref": "EnvironmentenvironmentvpcPrivateSubnet2RouteTable244FED3F",
+        },
+      },
+      "Type": "AWS::EC2::Route",
+    },
+    "EnvironmentenvironmentvpcPrivateSubnet2RouteTable244FED3F": Object {
+      "Properties": Object {
+        "Tags": Array [
+          Object {
+            "Key": "Name",
+            "Value": "http-load-balancer-listener-rules-integ/Environment-environment-vpc/PrivateSubnet2",
+          },
+        ],
+        "VpcId": Object {
+          "Ref": "Environmentenvironmentvpc02635CAD",
+        },
+      },
+      "Type": "AWS::EC2::RouteTable",
+    },
+    "EnvironmentenvironmentvpcPrivateSubnet2RouteTableAssociation9FE6BFCD": Object {
+      "Properties": Object {
+        "RouteTableId": Object {
+          "Ref": "EnvironmentenvironmentvpcPrivateSubnet2RouteTable244FED3F",
+        },
+        "SubnetId": Object {
+          "Ref": "EnvironmentenvironmentvpcPrivateSubnet2SubnetD38DAD67",
+        },
+      },
+      "Type": "AWS::EC2::SubnetRouteTableAssociation",
+    },
+    "EnvironmentenvironmentvpcPrivateSubnet2SubnetD38DAD67": Object {
+      "Properties": Object {
+        "AvailabilityZone": Object {
+          "Fn::Select": Array [
+            1,
+            Object {
+              "Fn::GetAZs": "",
+            },
+          ],
+        },
+        "CidrBlock": "10.0.192.0/18",
+        "MapPublicIpOnLaunch": false,
+        "Tags": Array [
+          Object {
+            "Key": "aws-cdk:subnet-name",
+            "Value": "Private",
+          },
+          Object {
+            "Key": "aws-cdk:subnet-type",
+            "Value": "Private",
+          },
+          Object {
+            "Key": "Name",
+            "Value": "http-load-balancer-listener-rules-integ/Environment-environment-vpc/PrivateSubnet2",
+          },
+        ],
+        "VpcId": Object {
+          "Ref": "Environmentenvironmentvpc02635CAD",
+        },
+      },
+      "Type": "AWS::EC2::Subnet",
+    },
+    "EnvironmentenvironmentvpcPublicSubnet1DefaultRoute4171CB3F": Object {
+      "DependsOn": Array [
+        "EnvironmentenvironmentvpcVPCGWD59F3C86",
+      ],
+      "Properties": Object {
+        "DestinationCidrBlock": "0.0.0.0/0",
+        "GatewayId": Object {
+          "Ref": "EnvironmentenvironmentvpcIGWD3352EF8",
+        },
+        "RouteTableId": Object {
+          "Ref": "EnvironmentenvironmentvpcPublicSubnet1RouteTableF562A242",
+        },
+      },
+      "Type": "AWS::EC2::Route",
+    },
+    "EnvironmentenvironmentvpcPublicSubnet1EIP0B5752AE": Object {
+      "Properties": Object {
+        "Domain": "vpc",
+        "Tags": Array [
+          Object {
+            "Key": "Name",
+            "Value": "http-load-balancer-listener-rules-integ/Environment-environment-vpc/PublicSubnet1",
+          },
+        ],
+      },
+      "Type": "AWS::EC2::EIP",
+    },
+    "EnvironmentenvironmentvpcPublicSubnet1NATGateway65E8E64D": Object {
+      "Properties": Object {
+        "AllocationId": Object {
+          "Fn::GetAtt": Array [
+            "EnvironmentenvironmentvpcPublicSubnet1EIP0B5752AE",
+            "AllocationId",
+          ],
+        },
+        "SubnetId": Object {
+          "Ref": "EnvironmentenvironmentvpcPublicSubnet1Subnet90FA3050",
+        },
+        "Tags": Array [
+          Object {
+            "Key": "Name",
+            "Value": "http-load-balancer-listener-rules-integ/Environment-environment-vpc/PublicSubnet1",
+          },
+        ],
+      },
+      "Type": "AWS::EC2::NatGateway",
+    },
+    "EnvironmentenvironmentvpcPublicSubnet1RouteTableAssociationFDE85030": Object {
+      "Properties": Object {
+        "RouteTableId": Object {
+          "Ref": "EnvironmentenvironmentvpcPublicSubnet1RouteTableF562A242",
+        },
+        "SubnetId": Object {
+          "Ref": "EnvironmentenvironmentvpcPublicSubnet1Subnet90FA3050",
+        },
+      },
+      "Type": "AWS::EC2::SubnetRouteTableAssociation",
+    },
+    "EnvironmentenvironmentvpcPublicSubnet1RouteTableF562A242": Object {
+      "Properties": Object {
+        "Tags": Array [
+          Object {
+            "Key": "Name",
+            "Value": "http-load-balancer-listener-rules-integ/Environment-environment-vpc/PublicSubnet1",
+          },
+        ],
+        "VpcId": Object {
+          "Ref": "Environmentenvironmentvpc02635CAD",
+        },
+      },
+      "Type": "AWS::EC2::RouteTable",
+    },
+    "EnvironmentenvironmentvpcPublicSubnet1Subnet90FA3050": Object {
+      "Properties": Object {
+        "AvailabilityZone": Object {
+          "Fn::Select": Array [
+            0,
+            Object {
+              "Fn::GetAZs": "",
+            },
+          ],
+        },
+        "CidrBlock": "10.0.0.0/18",
+        "MapPublicIpOnLaunch": true,
+        "Tags": Array [
+          Object {
+            "Key": "aws-cdk:subnet-name",
+            "Value": "Public",
+          },
+          Object {
+            "Key": "aws-cdk:subnet-type",
+            "Value": "Public",
+          },
+          Object {
+            "Key": "Name",
+            "Value": "http-load-balancer-listener-rules-integ/Environment-environment-vpc/PublicSubnet1",
+          },
+        ],
+        "VpcId": Object {
+          "Ref": "Environmentenvironmentvpc02635CAD",
+        },
+      },
+      "Type": "AWS::EC2::Subnet",
+    },
+    "EnvironmentenvironmentvpcPublicSubnet2DefaultRouteCA3995A5": Object {
+      "DependsOn": Array [
+        "EnvironmentenvironmentvpcVPCGWD59F3C86",
+      ],
+      "Properties": Object {
+        "DestinationCidrBlock": "0.0.0.0/0",
+        "GatewayId": Object {
+          "Ref": "EnvironmentenvironmentvpcIGWD3352EF8",
+        },
+        "RouteTableId": Object {
+          "Ref": "EnvironmentenvironmentvpcPublicSubnet2RouteTableCC311A3A",
+        },
+      },
+      "Type": "AWS::EC2::Route",
+    },
+    "EnvironmentenvironmentvpcPublicSubnet2EIP54A162E2": Object {
+      "Properties": Object {
+        "Domain": "vpc",
+        "Tags": Array [
+          Object {
+            "Key": "Name",
+            "Value": "http-load-balancer-listener-rules-integ/Environment-environment-vpc/PublicSubnet2",
+          },
+        ],
+      },
+      "Type": "AWS::EC2::EIP",
+    },
+    "EnvironmentenvironmentvpcPublicSubnet2NATGatewayEDDF81A3": Object {
+      "Properties": Object {
+        "AllocationId": Object {
+          "Fn::GetAtt": Array [
+            "EnvironmentenvironmentvpcPublicSubnet2EIP54A162E2",
+            "AllocationId",
+          ],
+        },
+        "SubnetId": Object {
+          "Ref": "EnvironmentenvironmentvpcPublicSubnet2Subnet80565813",
+        },
+        "Tags": Array [
+          Object {
+            "Key": "Name",
+            "Value": "http-load-balancer-listener-rules-integ/Environment-environment-vpc/PublicSubnet2",
+          },
+        ],
+      },
+      "Type": "AWS::EC2::NatGateway",
+    },
+    "EnvironmentenvironmentvpcPublicSubnet2RouteTableAssociation54B3A48A": Object {
+      "Properties": Object {
+        "RouteTableId": Object {
+          "Ref": "EnvironmentenvironmentvpcPublicSubnet2RouteTableCC311A3A",
+        },
+        "SubnetId": Object {
+          "Ref": "EnvironmentenvironmentvpcPublicSubnet2Subnet80565813",
+        },
+      },
+      "Type": "AWS::EC2::SubnetRouteTableAssociation",
+    },
+    "EnvironmentenvironmentvpcPublicSubnet2RouteTableCC311A3A": Object {
+      "Properties": Object {
+        "Tags": Array [
+          Object {
+            "Key": "Name",
+            "Value": "http-load-balancer-listener-rules-integ/Environment-environment-vpc/PublicSubnet2",
+          },
+        ],
+        "VpcId": Object {
+          "Ref": "Environmentenvironmentvpc02635CAD",
+        },
+      },
+      "Type": "AWS::EC2::RouteTable",
+    },
+    "EnvironmentenvironmentvpcPublicSubnet2Subnet80565813": Object {
+      "Properties": Object {
+        "AvailabilityZone": Object {
+          "Fn::Select": Array [
+            1,
+            Object {
+              "Fn::GetAZs": "",
+            },
+          ],
+        },
+        "CidrBlock": "10.0.64.0/18",
+        "MapPublicIpOnLaunch": true,
+        "Tags": Array [
+          Object {
+            "Key": "aws-cdk:subnet-name",
+            "Value": "Public",
+          },
+          Object {
+            "Key": "aws-cdk:subnet-type",
+            "Value": "Public",
+          },
+          Object {
+            "Key": "Name",
+            "Value": "http-load-balancer-listener-rules-integ/Environment-environment-vpc/PublicSubnet2",
+          },
+        ],
+        "VpcId": Object {
+          "Ref": "Environmentenvironmentvpc02635CAD",
+        },
+      },
+      "Type": "AWS::EC2::Subnet",
+    },
+    "EnvironmentenvironmentvpcVPCGWD59F3C86": Object {
+      "Properties": Object {
+        "InternetGatewayId": Object {
+          "Ref": "EnvironmentenvironmentvpcIGWD3352EF8",
+        },
+        "VpcId": Object {
+          "Ref": "Environmentenvironmentvpc02635CAD",
+        },
+      },
+      "Type": "AWS::EC2::VPCGatewayAttachment",
+    },
+    "ServiceserviceSecurityGroup1915660F": Object {
+      "Properties": Object {
+        "GroupDescription": "http-load-balancer-listener-rules-integ/Service-service/SecurityGroup",
+        "SecurityGroupEgress": Array [
+          Object {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "Allow all outbound traffic by default",
+            "IpProtocol": "-1",
+          },
+        ],
+        "VpcId": Object {
+          "Ref": "Environmentenvironmentvpc02635CAD",
+        },
+      },
+      "Type": "AWS::EC2::SecurityGroup",
+    },
+    "ServiceserviceSecurityGroupfromhttploadbalancerlistenerrulesintegAlbSecurityGroup8A31DFD0801728DE9F": Object {
+      "Properties": Object {
+        "Description": "Load balancer to target",
+        "FromPort": 80,
+        "GroupId": Object {
+          "Fn::GetAtt": Array [
+            "ServiceserviceSecurityGroup1915660F",
+            "GroupId",
+          ],
+        },
+        "IpProtocol": "tcp",
+        "SourceSecurityGroupId": Object {
+          "Fn::GetAtt": Array [
+            "AlbSecurityGroup580F65A6",
+            "GroupId",
+          ],
+        },
+        "ToPort": 80,
+      },
+      "Type": "AWS::EC2::SecurityGroupIngress",
+    },
+    "ServiceserviceSecurityGroupfromhttploadbalancerlistenerrulesintegAlbSecurityGroup8A31DFD0ALLPORTS7AE45C07": Object {
+      "Properties": Object {
+        "Description": "from httploadbalancerlistenerrulesintegAlbSecurityGroup8A31DFD0:ALL PORTS",
+        "FromPort": 0,
+        "GroupId": Object {
+          "Fn::GetAtt": Array [
+            "ServiceserviceSecurityGroup1915660F",
+            "GroupId",
+          ],
+        },
+        "IpProtocol": "tcp",
+        "SourceSecurityGroupId": Object {
+          "Fn::GetAtt": Array [
+            "AlbSecurityGroup580F65A6",
+            "GroupId",
+          ],
+        },
+        "ToPort": 65535,
+      },
+      "Type": "AWS::EC2::SecurityGroupIngress",
+    },
+    "ServiceserviceService6A153CB8": Object {
+      "DependsOn": Array [
+        "httploadbalancerlistenerrulesrule1F83045B7",
+        "httploadbalancerlistenerrulesrule6F621F7A0",
+      ],
+      "Properties": Object {
+        "Cluster": Object {
+          "Ref": "EnvironmentenvironmentclusterA67A8E69",
+        },
+        "DeploymentConfiguration": Object {
+          "MaximumPercent": 200,
+          "MinimumHealthyPercent": 100,
+        },
+        "DesiredCount": 1,
+        "EnableECSManagedTags": false,
+        "HealthCheckGracePeriodSeconds": 60,
+        "LaunchType": "FARGATE",
+        "LoadBalancers": Array [
+          Object {
+            "ContainerName": "app",
+            "ContainerPort": 80,
+            "TargetGroupArn": Object {
+              "Ref": "loadbalancerlistenerruleshttploadbalancerlistenerrules84153F11",
+            },
+          },
+        ],
+        "NetworkConfiguration": Object {
+          "AwsvpcConfiguration": Object {
+            "AssignPublicIp": "DISABLED",
+            "SecurityGroups": Array [
+              Object {
+                "Fn::GetAtt": Array [
+                  "ServiceserviceSecurityGroup1915660F",
+                  "GroupId",
+                ],
+              },
+            ],
+            "Subnets": Array [
+              Object {
+                "Ref": "EnvironmentenvironmentvpcPrivateSubnet1SubnetE66B59C1",
+              },
+              Object {
+                "Ref": "EnvironmentenvironmentvpcPrivateSubnet2SubnetD38DAD67",
+              },
+            ],
+          },
+        },
+        "TaskDefinition": Object {
+          "Ref": "Servicetaskdefinition0CEAD834",
+        },
+      },
+      "Type": "AWS::ECS::Service",
+    },
+    "Servicetaskdefinition0CEAD834": Object {
+      "Properties": Object {
+        "ContainerDefinitions": Array [
+          Object {
+            "Cpu": 256,
+            "Environment": Array [
+              Object {
+                "Name": "PORT",
+                "Value": "80",
+              },
+            ],
+            "Essential": true,
+            "Image": "nathanpeck/name",
+            "Memory": 512,
+            "Name": "app",
+            "PortMappings": Array [
+              Object {
+                "ContainerPort": 80,
+                "Protocol": "tcp",
+              },
+            ],
+            "Ulimits": Array [
+              Object {
+                "HardLimit": 1024000,
+                "Name": "nofile",
+                "SoftLimit": 1024000,
+              },
+            ],
+          },
+        ],
+        "Cpu": "256",
+        "Family": "httploadbalancerlistenerrulesintegServicetaskdefinition627BCACB",
+        "Memory": "512",
+        "NetworkMode": "awsvpc",
+        "RequiresCompatibilities": Array [
+          "EC2",
+          "FARGATE",
+        ],
+        "TaskRoleArn": Object {
+          "Fn::GetAtt": Array [
+            "ServicetaskdefinitionTaskRole5B4B60A4",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "AWS::ECS::TaskDefinition",
+    },
+    "ServicetaskdefinitionTaskRole5B4B60A4": Object {
+      "Properties": Object {
+        "AssumeRolePolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": Object {
+                "Service": "ecs-tasks.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "httploadbalancerlistenerrulesrule114DC93A26": Object {
+      "Properties": Object {
+        "Actions": Array [
+          Object {
+            "RedirectConfig": Object {
+              "Host": "aws.amazon.com",
+              "Path": "/",
+              "Port": "443",
+              "Protocol": "HTTPS",
+              "StatusCode": "HTTP_302",
+            },
+            "Type": "redirect",
+          },
+        ],
+        "Conditions": Array [
+          Object {
+            "Field": "path-pattern",
+            "PathPatternConfig": Object {
+              "Values": Array [
+                "/redirect",
+              ],
+            },
+          },
+        ],
+        "ListenerArn": Object {
+          "Ref": "AlbhttpF4DDFFB4",
+        },
+        "Priority": 11,
+      },
+      "Type": "AWS::ElasticLoadBalancingV2::ListenerRule",
+    },
+    "httploadbalancerlistenerrulesrule1F83045B7": Object {
+      "Properties": Object {
+        "Actions": Array [
+          Object {
+            "TargetGroupArn": Object {
+              "Ref": "loadbalancerlistenerruleshttploadbalancerlistenerrules84153F11",
+            },
+            "Type": "forward",
+          },
+        ],
+        "Conditions": Array [
+          Object {
+            "Field": "path-pattern",
+            "PathPatternConfig": Object {
+              "Values": Array [
+                "/name1",
+              ],
+            },
+          },
+        ],
+        "ListenerArn": Object {
+          "Ref": "AlbhttpF4DDFFB4",
+        },
+        "Priority": 1,
+      },
+      "Type": "AWS::ElasticLoadBalancingV2::ListenerRule",
+    },
+    "httploadbalancerlistenerrulesrule6F621F7A0": Object {
+      "Properties": Object {
+        "Actions": Array [
+          Object {
+            "TargetGroupArn": Object {
+              "Ref": "loadbalancerlistenerruleshttploadbalancerlistenerrules84153F11",
+            },
+            "Type": "forward",
+          },
+        ],
+        "Conditions": Array [
+          Object {
+            "Field": "path-pattern",
+            "PathPatternConfig": Object {
+              "Values": Array [
+                "/name2",
+              ],
+            },
+          },
+        ],
+        "ListenerArn": Object {
+          "Ref": "AlbhttpF4DDFFB4",
+        },
+        "Priority": 6,
+      },
+      "Type": "AWS::ElasticLoadBalancingV2::ListenerRule",
+    },
+    "loadbalancerlistenerruleshttploadbalancerlistenerrules84153F11": Object {
+      "Properties": Object {
+        "Port": 80,
+        "Protocol": "HTTP",
+        "TargetType": "ip",
+        "VpcId": Object {
+          "Ref": "Environmentenvironmentvpc02635CAD",
+        },
+      },
+      "Type": "AWS::ElasticLoadBalancingV2::TargetGroup",
+    },
+  },
+}
+`;
