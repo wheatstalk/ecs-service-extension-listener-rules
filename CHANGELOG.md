@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 0.1.0 (2020-11-02)
+
+
+### ⚠ BREAKING CHANGES
+
+* change priority positional to named option (#3)
+
+* change priority positional to named option ([#3](https://github.com/wheatstalk/ecs-service-extension-listener-rules/issues/3)) ([25a1281](https://github.com/wheatstalk/ecs-service-extension-listener-rules/commit/25a1281b3af58cad85141fc07709a13ad7bcda01))
+
 ### 0.0.5 (2020-11-02)
 
 ### 0.0.4 (2020-11-02)
