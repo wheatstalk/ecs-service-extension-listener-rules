@@ -70,7 +70,7 @@ export interface ListenerRule {
 }
 
 /**
- * Options or adding rules
+ * Basic options for adding rules
  */
 export interface RuleOptions {
   /**
