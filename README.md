@@ -34,15 +34,15 @@ serviceDescription.add(new ListenerRulesExtension({
   priorityStep: 5, // Step size for automatic numbering (default is `5`)
   rules: [
     // Serve requests for 'www.example.com'
-    HttpLoadBalancerListenerRules.hostHeader('www.example.com'),
+    ListenerRulesExtension.hostHeader('www.example.com'),
     // Redirect '*.example.com' to 'www.example.com'
-    HttpLoadBalancerListenerRules.hostHeaderRedirect('*.example.com', {
+    ListenerRulesExtension.hostHeaderRedirect('*.example.com', {
       host: 'www.example.com',
     }),
     // Serve requests on a subpath '/somepath'
-    HttpLoadBalancerListenerRules.pathPattern('/somepath'),
+    ListenerRulesExtension.pathPattern('/somepath'),
     // Redirect the path '/redirect' to 'aws.amazon.com'
-    HttpLoadBalancerListenerRules.pathPatternRedirect('/redirect', {
+    ListenerRulesExtension.pathPatternRedirect('/redirect', {
       host: 'aws.amazon.com',
     }),
   ],
