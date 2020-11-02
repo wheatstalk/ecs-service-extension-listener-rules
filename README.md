@@ -53,7 +53,7 @@ If you have specific requirements for ALB priorities, you may set the rule
 priorities in either of two ways:
 
 * Provide a `priorityStart` to the extension props
-* Provide a `priority` parameter for a specific rule
+* Provide a `priority` option for a specific rule
 
 **Priority examples**
 
@@ -66,7 +66,9 @@ serviceDescription.add(new ListenerRulesExtension({
     // Serve requests for 'www.example.com' - will be priority 10000
     ListenerRulesExtension.hostHeader('www.example.com'),
     // Register the wildcard host header so that has the priority 39999
-    ListenerRulesExtension.hostHeader('*.example.com', 39999),
+    ListenerRulesExtension.hostHeader('*.example.com', {
+      priority: 39999,
+    }),
   ],
 }));
 ```
