@@ -1,0 +1,195 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>@wheatstalk/ecs-service-extension-listener-rules</title>
+	<meta name="description" content="Documentation for @wheatstalk/ecs-service-extension-listener-rules">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+	<script async src="assets/js/search.js" id="search-script"></script>
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.json" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">@wheatstalk/ecs-service-extension-listener-rules</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<h1>Project @wheatstalk/ecs-service-extension-listener-rules</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<a href="#listener-rule-extension" id="listener-rule-extension" style="color: inherit; text-decoration: none;">
+					<h2>Listener Rule Extension</h2>
+				</a>
+				<p>This module provides an <a href="https://www.npmjs.com/package/@aws-cdk-containers/ecs-service-extensions">ECS Service Extension</a>
+					that registers your service with an application load balancer by way of listener
+				rules.</p>
+				<p>Rules added via this extension are automatically prioritized in the load balancer
+					by default. The automatic prioritization starts at a number (default: 1) and
+					increases by a step value (default: 5) for each rule added that doesn&#39;t have an
+				explicit priority.</p>
+				<a href="#get-started" id="get-started" style="color: inherit; text-decoration: none;">
+					<h2>Get Started</h2>
+				</a>
+				<p>To add this module to your project, install <code>@wheatstalk/ecs-service-extension-listener-rules</code>
+				with either <code>yarn</code> or <code>npm</code>:</p>
+				<pre><code class="language-bash"><span class="hljs-comment"># Yarn</span>
+yarn add @wheatstalk/ecs-service-extension-listener-rules
+
+<span class="hljs-comment"># NPM install</span>
+npm install @wheatstalk/ecs-service-extension-listener-rules</code></pre>
+				<a href="#example-usage" id="example-usage" style="color: inherit; text-decoration: none;">
+					<h2>Example Usage</h2>
+				</a>
+				<p>You may expose your service by adding listener rules to an existing Application
+					Load Balancer listener. To accomplish this, you must set up your service
+				description and then add a new <code>ListenerRulesExtension</code>:</p>
+				<pre><code class="language-ts">serviceDescription.add(<span class="hljs-keyword">new</span> ListenerRulesExtension({
+  listener, <span class="hljs-comment">// Your IApplicationListener</span>
+  <span class="hljs-attr">rules</span>: [
+    <span class="hljs-comment">// Serve requests for &#x27;www.example.com&#x27;</span>
+    ListenerRulesExtension.hostHeader(<span class="hljs-string">&#x27;www.example.com&#x27;</span>),
+    <span class="hljs-comment">// Redirect &#x27;*.example.com&#x27; to &#x27;www.example.com&#x27;</span>
+    ListenerRulesExtension.hostHeaderRedirect(<span class="hljs-string">&#x27;*.example.com&#x27;</span>, {
+      <span class="hljs-attr">host</span>: <span class="hljs-string">&#x27;www.example.com&#x27;</span>,
+    }),
+    <span class="hljs-comment">// Serve requests on a subpath &#x27;/somepath&#x27;</span>
+    ListenerRulesExtension.pathPattern(<span class="hljs-string">&#x27;/somepath&#x27;</span>),
+    <span class="hljs-comment">// Redirect the path &#x27;/redirect&#x27; to &#x27;aws.amazon.com&#x27;</span>
+    ListenerRulesExtension.pathPatternRedirect(<span class="hljs-string">&#x27;/redirect&#x27;</span>, {
+      <span class="hljs-attr">host</span>: <span class="hljs-string">&#x27;aws.amazon.com&#x27;</span>,
+    }),
+  ],
+}));</code></pre>
+				<a href="#choosing-priorities" id="choosing-priorities" style="color: inherit; text-decoration: none;">
+					<h2>Choosing Priorities</h2>
+				</a>
+				<p>If you have specific requirements for ALB priorities, you may set the rule
+				priorities in either of two ways:</p>
+				<ul>
+					<li>Provide a <code>priorityStart</code> to the extension props</li>
+					<li>Provide a <code>priority</code> option for a specific rule</li>
+				</ul>
+				<p><strong>Priority examples</strong></p>
+				<pre><code class="language-ts">serviceDescription.add(<span class="hljs-keyword">new</span> ListenerRulesExtension({
+  listener, <span class="hljs-comment">// Your IApplicationListener</span>
+  <span class="hljs-attr">priorityStart</span>: <span class="hljs-number">10000</span>, <span class="hljs-comment">// Starting priority number (default is `1`)</span>
+  <span class="hljs-attr">priorityStep</span>: <span class="hljs-number">5</span>, <span class="hljs-comment">// Step size for automatic numbering (default is `5`)</span>
+  <span class="hljs-attr">rules</span>: [
+    <span class="hljs-comment">// Serve requests for &#x27;www.example.com&#x27; - will be priority 10000</span>
+    ListenerRulesExtension.hostHeader(<span class="hljs-string">&#x27;www.example.com&#x27;</span>),
+    <span class="hljs-comment">// Register the wildcard host header with the priority 39999</span>
+    ListenerRulesExtension.hostHeader(<span class="hljs-string">&#x27;*.example.com&#x27;</span>, {
+      <span class="hljs-attr">priority</span>: <span class="hljs-number">39999</span>,
+    }),
+  ],
+}));</code></pre>
+				<a href="#note-on-jsii-support" id="note-on-jsii-support" style="color: inherit; text-decoration: none;">
+					<h2>Note on JSII Support</h2>
+				</a>
+				<p>This module won&#39;t support JSII until ECS Service Extensions introduces support
+				for JSII.</p>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class=" ">
+						<a href="modules.html">Exports</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-class">
+						<a href="classes/listenerrulesextension.html" class="tsd-kind-icon">Listener<wbr>Rules<wbr>Extension</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/listenerrule.html" class="tsd-kind-icon">Listener<wbr>Rule</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/listenerrulesprops.html" class="tsd-kind-icon">Listener<wbr>Rules<wbr>Props</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/redirectruleoptions.html" class="tsd-kind-icon">Redirect<wbr>Rule<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/ruleoptions.html" class="tsd-kind-icon">Rule<wbr>Options</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
