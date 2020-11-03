@@ -29,6 +29,7 @@ const project = new TypeScriptProject({
 });
 
 project.gitignore.exclude('.idea', 'cdk.out');
+project.npmignore.exclude('docs');
 
 project.addScript('docgen', 'typedoc --out docs src/index.ts && touch docs/.nojekyll', {
     startCategory: StartEntryCategory.RELEASE,
