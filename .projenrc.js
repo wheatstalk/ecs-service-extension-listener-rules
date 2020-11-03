@@ -6,6 +6,13 @@ const project = new TypeScriptProject({
     name: '@wheatstalk/ecs-service-extension-listener-rules',
     repository: 'https://github.com/wheatstalk/ecs-service-extension-listener-rules.git',
     // Use workflow dispatch from the github ui to release.
+    workflowBootstrapSteps: [
+        ...TypeScriptProject.DEFAULT_WORKFLOW_BOOTSTRAP,
+        {
+            name: 'Regenerate the docs',
+            run: './auto-docs.sh',
+        },
+    ],
     releaseEveryCommit: false,
     releaseToNpm: true,
     deps: [
