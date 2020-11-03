@@ -66,7 +66,7 @@ serviceDescription.add(new ListenerRulesExtension({
   rules: [
     // Serve requests for 'www.example.com' - will be priority 10000
     ListenerRulesExtension.hostHeader('www.example.com'),
-    // Register the wildcard host header so that has the priority 39999
+    // Register the wildcard host header with the priority 39999
     ListenerRulesExtension.hostHeader('*.example.com', {
       priority: 39999,
     }),
