@@ -40,21 +40,24 @@ yarnUp.on({
 
 yarnUp.addJobs({
     upgrade: {
+        'name': 'Yarn Upgrade',
         'runs-on': 'ubuntu-latest',
         'steps': [
             { uses: 'actions/checkout@v2' },
             { run: 'yarn install --frozen-lockfile' },
             { run: 'yarn upgrade' },
             { run: 'yarn build' },
+            { run: 'yarn projen' },
             {
                 name: 'Create Pull Request',
                 uses: 'peter-evans/create-pull-request@v3',
                 with: {
-                    title: 'Automatic yarn upgrade',
+                    title: 'chore: automatic yarn upgrade',
+                    token: 'YARN_UPGRADE_TOKEN',
                 },
             },
-        ]
-    }
+        ],
+    },
 });
 
 project.mergify.addRule({
