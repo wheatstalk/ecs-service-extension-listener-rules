@@ -52,8 +52,9 @@ yarnUp.addJobs({
                 name: 'Create Pull Request',
                 uses: 'peter-evans/create-pull-request@v3',
                 with: {
-                    title: 'chore: automatic yarn upgrade',
-                    token: '${{ secrets.YARN_UPGRADE_TOKEN }}',
+                    'title': 'chore: automatic yarn upgrade',
+                    'commit-message': 'chore: automatic yarn upgrade',
+                    'token': '${{ secrets.YARN_UPGRADE_TOKEN }}',
                 },
             },
         ],
