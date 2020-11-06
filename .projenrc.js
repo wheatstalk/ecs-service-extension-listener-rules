@@ -42,7 +42,8 @@ yarnUp.addJobs({
     upgrade: {
         'runs-on': 'ubuntu-latest',
         'steps': [
-            ...TypeScriptProject.DEFAULT_WORKFLOW_BOOTSTRAP,
+            { uses: 'actions/checkout@v2' },
+            { run: 'yarn install --frozen-lockfile' },
             { run: 'yarn upgrade' },
             { run: 'yarn build' },
             {
