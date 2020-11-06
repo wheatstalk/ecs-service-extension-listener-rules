@@ -44,11 +44,11 @@ yarnUp.addJobs({
         'runs-on': 'ubuntu-latest',
         'steps': [
             { uses: 'actions/checkout@v2' },
-            { run: 'yarn install --frozen-lockfile' },
             { run: 'yarn upgrade' },
             { run: 'yarn install' },
+            { run: 'git diff' },
+            { run: 'npx projen' },
             { run: 'yarn build' },
-            { run: 'yarn projen' },
             {
                 name: 'Create Pull Request',
                 uses: 'peter-evans/create-pull-request@v3',
