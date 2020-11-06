@@ -65,15 +65,15 @@ project.mergify.addRule({
     name: 'Merge pull requests automatic yarn upgrade if CI passes',
     conditions: [
         "head=create-pull-request/patch",
-        "status-success=build"
+        "status-success=build",
     ],
     actions: {
         merge: {
             method: 'merge',
             commit_message: 'title+body',
         },
-    }
-})
+    },
+});
 
 project.addScript('docgen', 'typedoc --out docs src/index.ts && touch docs/.nojekyll', {
     startCategory: StartEntryCategory.RELEASE,
