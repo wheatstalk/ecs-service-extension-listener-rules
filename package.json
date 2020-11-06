@@ -20,7 +20,7 @@
     "test": "rm -fr lib/ && jest --passWithNoTests --updateSnapshot && yarn run eslint",
     "test:watch": "jest --watch",
     "test:update": "jest --updateSnapshot",
-    "eslint": "eslint --ext .ts --fix src test",
+    "eslint": "eslint --ext .ts --fix --no-error-on-unmatched-pattern src test",
     "docgen": "typedoc --out docs src/index.ts && touch docs/.nojekyll"
   },
   "author": {
@@ -40,7 +40,7 @@
     "eslint-plugin-import": "^2.22.1",
     "jest": "^26.4.2",
     "json-schema": "^0.2.5",
-    "projen": "^0.3.141",
+    "projen": "^0.3.155",
     "standard-version": "^9.0.0",
     "ts-jest": "^26.1.0",
     "typedoc": "beta",
