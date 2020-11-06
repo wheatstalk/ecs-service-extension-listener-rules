@@ -53,7 +53,7 @@ yarnUp.addJobs({
                 uses: 'peter-evans/create-pull-request@v3',
                 with: {
                     title: 'chore: automatic yarn upgrade',
-                    token: 'YARN_UPGRADE_TOKEN',
+                    token: '${{ secrets.YARN_UPGRADE_TOKEN }}',
                 },
             },
         ],
