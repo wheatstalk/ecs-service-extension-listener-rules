@@ -48,7 +48,9 @@ yarnUp.addJobs({
             {
                 name: 'Create Pull Request',
                 uses: 'peter-evans/create-pull-request@v3',
-                title: 'Automatic yarn upgrade',
+                with: {
+                    title: 'Automatic yarn upgrade',
+                },
             },
         ]
     }
