@@ -56,3 +56,4 @@ cdk.out
 !/tsconfig.jest.json
 !/test
 !/.eslintrc.json
+!/.github/workflows/yarn-upgrade.yml

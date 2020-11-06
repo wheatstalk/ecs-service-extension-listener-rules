@@ -1,4 +1,4 @@
-const { TypeScriptProject, StartEntryCategory } = require('projen');
+const { TypeScriptProject, StartEntryCategory, GithubWorkflow } = require('projen');
 
 const project = new TypeScriptProject({
     authorAddress: 'joshkellendonk@gmail.com',
@@ -30,6 +30,43 @@ const project = new TypeScriptProject({
 
 project.gitignore.exclude('.idea', 'cdk.out');
 project.npmignore.exclude('docs');
+
+const yarnUp = new GithubWorkflow(project, 'yarn-upgrade');
+
+yarnUp.on({
+    schedule: [{ cron: '0 6 * * *'}],
+    workflow_dispatch: {},
+});
+
+yarnUp.addJobs({
+    upgrade: {
+        'runs-on': 'ubuntu-latest',
+        'steps': [
+            ...TypeScriptProject.DEFAULT_WORKFLOW_BOOTSTRAP,
+            { run: 'yarn upgrade' },
+            { run: 'yarn build' },
+            {
+                name: 'Create Pull Request',
+                uses: 'peter-evans/create-pull-request@v3',
+                title: 'Automatic yarn upgrade',
+            },
+        ]
+    }
+});
+
+project.mergify.addRule({
+    name: 'Merge pull requests automatic yarn upgrade if CI passes',
+    conditions: [
+        "head=create-pull-request/patch",
+        "status-success=build"
+    ],
+    actions: {
+        merge: {
+            method: 'merge',
+            commit_message: 'title+body',
+        },
+    }
+})
 
 project.addScript('docgen', 'typedoc --out docs src/index.ts && touch docs/.nojekyll', {
     startCategory: StartEntryCategory.RELEASE,
