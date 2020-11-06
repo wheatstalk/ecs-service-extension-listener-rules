@@ -46,6 +46,7 @@ yarnUp.addJobs({
             { uses: 'actions/checkout@v2' },
             { run: 'yarn install --frozen-lockfile' },
             { run: 'yarn upgrade' },
+            { run: 'yarn install' },
             { run: 'yarn build' },
             { run: 'yarn projen' },
             {
