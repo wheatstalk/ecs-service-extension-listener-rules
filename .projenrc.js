@@ -45,9 +45,8 @@ yarnUp.addJobs({
         'steps': [
             { uses: 'actions/checkout@v2' },
             { run: 'yarn upgrade' },
-            { run: 'yarn install --check-files' },
             { run: 'git diff' },
-            { run: 'npx projen' },
+            { run: 'CI="" npx projen' },
             { run: 'yarn build' },
             {
                 name: 'Create Pull Request',
