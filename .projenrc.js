@@ -45,7 +45,7 @@ yarnUp.addJobs({
         'steps': [
             { uses: 'actions/checkout@v2' },
             { run: 'yarn upgrade' },
-            { run: 'yarn install' },
+            { run: 'yarn install --check-files' },
             { run: 'git diff' },
             { run: 'npx projen' },
             { run: 'yarn build' },
