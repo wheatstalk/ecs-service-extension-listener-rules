@@ -2059,9 +2059,9 @@ concat-stream@^2.0.0:
     typedarray "^0.0.6"
 
 constructs@^3.2.0:
-  version "3.2.23"
-  resolved "https://registry.yarnpkg.com/constructs/-/constructs-3.2.23.tgz#c6eac61bcdc0ae8892e53f47998d8326280ed67e"
-  integrity sha512-OjSkEKxPPHejROgAqwPvPRJ11nJWpt2dCIqYWdWyRMnpEu2FIbIJDeEcQuWKJB7gKIOqI0X8zhpsgoAqaiPCLA==
+  version "3.2.24"
+  resolved "https://registry.yarnpkg.com/constructs/-/constructs-3.2.24.tgz#52b1dbf540a92a41cb96f4e41b381c84ccc41811"
+  integrity sha512-mqhUQ+jR12UrrTaDaX5Y+IjinS5bWltQ/RH619nps63+ADphvmQuloxsCfQfYKwS8+A+J10JJpajsOZs+JQNMg==
 
 contains-path@^0.1.0:
   version "0.1.0"
@@ -5133,10 +5133,10 @@ progress@^2.0.0, progress@^2.0.3:
   resolved "https://registry.yarnpkg.com/progress/-/progress-2.0.3.tgz#7e8cf8d8f5b8f239c1bc68beb4eb78567d572ef8"
   integrity sha512-7PiHtLll5LdnKIMw100I+8xJXR5gW2QwWYkT6iJva0bXitZKa/XMrSbdmg3r2Xnaidz9Qumd0VPaMrZlF9V9sA==
 
-projen@^0.3.165:
-  version "0.3.165"
-  resolved "https://registry.yarnpkg.com/projen/-/projen-0.3.165.tgz#4ae5f84317d8e6c5aa0b168af6525a4e4afeaf6a"
-  integrity sha512-EfmMzY0rTzLM2Ps+SuT8PvJ6C61XD8Dmrub2WR7jqzN35OmbP6gMqo6tK5au7KQhoN6yD8nrXAoRtl5OYTEIeg==
+projen@^0.3.166:
+  version "0.3.166"
+  resolved "https://registry.yarnpkg.com/projen/-/projen-0.3.166.tgz#62b5445c64732aa38ee38304e2570063a463c3d6"
+  integrity sha512-BgP3hqaHmwVmyimzlCRbV6Up7SyxAPNyP7q74OOcqa9NGyMjVriqaKXUnHZ7APXg0Kw8z9UHUnEnHkzlD/IYRA==
   dependencies:
     "@iarna/toml" "^2.2.5"
     chalk "^4.1.0"
