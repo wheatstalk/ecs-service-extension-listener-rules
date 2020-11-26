@@ -2066,9 +2066,9 @@ concat-stream@^2.0.0:
     typedarray "^0.0.6"
 
 constructs@^3.2.0:
-  version "3.2.42"
-  resolved "https://registry.yarnpkg.com/constructs/-/constructs-3.2.42.tgz#0c40e97e22b93a7995484fbe8bee5eb775e532e6"
-  integrity sha512-kqIwmxzM1ekuuwgNqVAW0qkkU++ImrQo388UcXXEpo4iX+FMRsJv+iHykT3U5HdSALov2y/uFJW3pUNwNspKIw==
+  version "3.2.43"
+  resolved "https://registry.yarnpkg.com/constructs/-/constructs-3.2.43.tgz#05c1ee9f719a01cd1a37dc919e1863320e396050"
+  integrity sha512-na2tVem/lPXU1TieY/zDiZGedCt+Yjk5nWPpIySWwRI5jMbOiCiFcsa8bYcu5scQm2OzCuHXSw3J7YU3tWfDHw==
 
 contains-path@^0.1.0:
   version "0.1.0"
@@ -6257,15 +6257,15 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-typedoc-default-themes@0.12.0-beta.6:
-  version "0.12.0-beta.6"
-  resolved "https://registry.yarnpkg.com/typedoc-default-themes/-/typedoc-default-themes-0.12.0-beta.6.tgz#b8a0b49e00f85b0a906f3f33b13d83cf877b44de"
-  integrity sha512-3B6gxssa+cecFwKNNx28dTQu/csjXnZlwv+yi2AOj/hYUdXVqC4FUGuPdYiDC3eBKiumx8H7do7VmBA7R2C57A==
+typedoc-default-themes@0.12.0-beta.7:
+  version "0.12.0-beta.7"
+  resolved "https://registry.yarnpkg.com/typedoc-default-themes/-/typedoc-default-themes-0.12.0-beta.7.tgz#4bb62139f2a5295aa0cf38a41e4dcdaef47f4dc4"
+  integrity sha512-Y6ohKjfFsTrcx/aBqzr0X2jvnKJBB6C0Xx4cQDAsUT8B0N7hb/PqVGFpidVsr+PRbEqcPlZyu4cRYn8l2H3iKw==
 
 typedoc@beta:
-  version "0.20.0-beta.8"
-  resolved "https://registry.yarnpkg.com/typedoc/-/typedoc-0.20.0-beta.8.tgz#6fc92f37eff43901fd9f5ec9fd6690671363d8db"
-  integrity sha512-2NSno7Q+En69EkI7v7w3UhKBZT6B6bT8t6yK5C84eTNYk2oyE6NUvflEsd4Ezpp66o/spqRmICnUb0Ig6vNAzg==
+  version "0.20.0-beta.14"
+  resolved "https://registry.yarnpkg.com/typedoc/-/typedoc-0.20.0-beta.14.tgz#9f481fd6a6fcdc1025dd06c4903dd861ec6b043f"
+  integrity sha512-osPHsBQxs+xkqSWHeCc6I+e5fO4SVHwpfEYWR4OUZWifW2KdSYQGp5NQcX7fGj5EeBWZzGJ/hvmJ9hjrsDZTAg==
   dependencies:
     fs-extra "^9.0.1"
     handlebars "^4.7.6"
@@ -6277,7 +6277,7 @@ typedoc@beta:
     progress "^2.0.3"
     semver "^7.3.2"
     shelljs "^0.8.4"
-    typedoc-default-themes "0.12.0-beta.6"
+    typedoc-default-themes "0.12.0-beta.7"
 
 typescript@^3.9.5:
   version "3.9.7"
