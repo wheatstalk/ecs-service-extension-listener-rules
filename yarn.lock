@@ -2068,9 +2068,9 @@ concat-stream@^2.0.0:
     typedarray "^0.0.6"
 
 constructs@^3.2.0:
-  version "3.2.59"
-  resolved "https://registry.yarnpkg.com/constructs/-/constructs-3.2.59.tgz#452e251534aff24d41e6b597db04abb1a734e3cd"
-  integrity sha512-mg7IJyLyi9EjT1Arsq99GEuNk0cebbm7wSoHy+Of3fBy4uypUO0xIHmx6FKn1NfPj28PEpzEAHzXoy1IPO4ySw==
+  version "3.2.61"
+  resolved "https://registry.yarnpkg.com/constructs/-/constructs-3.2.61.tgz#599c15e53992d3edd0fccc86c1986fb6f47fb775"
+  integrity sha512-Q8LJRKP3zcWhP61KDx583tehjnILmXquuMPImcJrAY5/mYvSSUNe4PHnjtVwXwjhzq/HOOUbsL1IHiH8j5PfvQ==
 
 contains-path@^0.1.0:
   version "0.1.0"
@@ -6269,9 +6269,9 @@ typedoc-default-themes@0.12.0-beta.10:
   integrity sha512-RqTLRQvzuLrNEZ1VcmYoQiFkixW0QvVUv0R35jlkhxAMGtoo/giUVtWrWY1+Yp7HBnfI/wZKvhZpQYswbDL7eQ==
 
 typedoc@beta:
-  version "0.20.0-beta.25"
-  resolved "https://registry.yarnpkg.com/typedoc/-/typedoc-0.20.0-beta.25.tgz#e3fc9f83a9c348d38218c9a64a44925c952ef9e8"
-  integrity sha512-AagmStf0cSmiAokrtdBPif2Gr1o30Y7G4Y5aKPwGPHeSHd68DvxATgZbAqx6ec5sp/Ez9hKQrMmd7JI37PJPYg==
+  version "0.20.0-beta.26"
+  resolved "https://registry.yarnpkg.com/typedoc/-/typedoc-0.20.0-beta.26.tgz#123fb9758009aad26d29dae762ce4fcadf3dad9a"
+  integrity sha512-6gJsPTlmXyqxgwVlNG1YAeNRQMGrBv20ibfrnX8LKLPA24is8p6KSV02VBmkDYkXfzXufmk3dcrBON7hW8vQXQ==
   dependencies:
     colors "^1.4.0"
     fs-extra "^9.0.1"
