@@ -73,10 +73,10 @@
 				</a>
 				<p>To add this module to your project, install <code>@wheatstalk/ecs-service-extension-listener-rules</code>
 				with either <code>yarn</code> or <code>npm</code>:</p>
-				<pre><code class="language-bash"><span class="hljs-comment"># Yarn</span>
+				<pre><code class="language-bash"># Yarn
 yarn add @wheatstalk/ecs-service-extension-listener-rules
 
-<span class="hljs-comment"># NPM install</span>
+# NPM install
 npm install @wheatstalk/ecs-service-extension-listener-rules</code></pre>
 				<a href="#example-usage" id="example-usage" style="color: inherit; text-decoration: none;">
 					<h2>Example Usage</h2>
@@ -84,23 +84,24 @@ npm install @wheatstalk/ecs-service-extension-listener-rules</code></pre>
 				<p>You may expose your service by adding listener rules to an existing Application
 					Load Balancer listener. To accomplish this, you must set up your service
 				description and then add a new <code>ListenerRulesExtension</code>:</p>
-				<pre><code class="language-ts">serviceDescription.add(<span class="hljs-keyword">new</span> ListenerRulesExtension({
-  listener, <span class="hljs-comment">// Your IApplicationListener</span>
-  <span class="hljs-attr">rules</span>: [
-    <span class="hljs-comment">// Serve requests for &#x27;www.example.com&#x27;</span>
-    ListenerRulesExtension.hostHeader(<span class="hljs-string">&#x27;www.example.com&#x27;</span>),
-    <span class="hljs-comment">// Redirect &#x27;*.example.com&#x27; to &#x27;www.example.com&#x27;</span>
-    ListenerRulesExtension.hostHeaderRedirect(<span class="hljs-string">&#x27;*.example.com&#x27;</span>, {
-      <span class="hljs-attr">host</span>: <span class="hljs-string">&#x27;www.example.com&#x27;</span>,
-    }),
-    <span class="hljs-comment">// Serve requests on a subpath &#x27;/somepath&#x27;</span>
-    ListenerRulesExtension.pathPattern(<span class="hljs-string">&#x27;/somepath&#x27;</span>),
-    <span class="hljs-comment">// Redirect the path &#x27;/redirect&#x27; to &#x27;aws.amazon.com&#x27;</span>
-    ListenerRulesExtension.pathPatternRedirect(<span class="hljs-string">&#x27;/redirect&#x27;</span>, {
-      <span class="hljs-attr">host</span>: <span class="hljs-string">&#x27;aws.amazon.com&#x27;</span>,
-    }),
-  ],
-}));</code></pre>
+				<pre><code class="language-ts"><span style="color: #001080">serviceDescription</span><span style="color: #000000">.</span><span style="color: #795E26">add</span><span style="color: #000000">(</span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #267F99">ListenerRulesExtension</span><span style="color: #000000">({</span>
+<span style="color: #000000">  </span><span style="color: #001080">listener</span><span style="color: #000000">, </span><span style="color: #008000">// Your IApplicationListener</span>
+<span style="color: #000000">  </span><span style="color: #001080">rules:</span><span style="color: #000000"> [</span>
+<span style="color: #000000">    </span><span style="color: #008000">// Serve requests for &#039;www.example.com&#039;</span>
+<span style="color: #000000">    </span><span style="color: #001080">ListenerRulesExtension</span><span style="color: #000000">.</span><span style="color: #795E26">hostHeader</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;www.example.com&#039;</span><span style="color: #000000">),</span>
+<span style="color: #000000">    </span><span style="color: #008000">// Redirect &#039;*.example.com&#039; to &#039;www.example.com&#039;</span>
+<span style="color: #000000">    </span><span style="color: #001080">ListenerRulesExtension</span><span style="color: #000000">.</span><span style="color: #795E26">hostHeaderRedirect</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;*.example.com&#039;</span><span style="color: #000000">, {</span>
+<span style="color: #000000">      </span><span style="color: #001080">host:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;www.example.com&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">    }),</span>
+<span style="color: #000000">    </span><span style="color: #008000">// Serve requests on a subpath &#039;/somepath&#039;</span>
+<span style="color: #000000">    </span><span style="color: #001080">ListenerRulesExtension</span><span style="color: #000000">.</span><span style="color: #795E26">pathPattern</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;/somepath&#039;</span><span style="color: #000000">),</span>
+<span style="color: #000000">    </span><span style="color: #008000">// Redirect the path &#039;/redirect&#039; to &#039;aws.amazon.com&#039;</span>
+<span style="color: #000000">    </span><span style="color: #001080">ListenerRulesExtension</span><span style="color: #000000">.</span><span style="color: #795E26">pathPatternRedirect</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;/redirect&#039;</span><span style="color: #000000">, {</span>
+<span style="color: #000000">      </span><span style="color: #001080">host:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;aws.amazon.com&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">    }),</span>
+<span style="color: #000000">  ],</span>
+<span style="color: #000000">}));</span>
+</code></pre>
 				<a href="#choosing-priorities" id="choosing-priorities" style="color: inherit; text-decoration: none;">
 					<h2>Choosing Priorities</h2>
 				</a>
@@ -111,19 +112,20 @@ npm install @wheatstalk/ecs-service-extension-listener-rules</code></pre>
 					<li>Provide a <code>priority</code> option for a specific rule</li>
 				</ul>
 				<p><strong>Priority examples</strong></p>
-				<pre><code class="language-ts">serviceDescription.add(<span class="hljs-keyword">new</span> ListenerRulesExtension({
-  listener, <span class="hljs-comment">// Your IApplicationListener</span>
-  <span class="hljs-attr">priorityStart</span>: <span class="hljs-number">10000</span>, <span class="hljs-comment">// Starting priority number (default is `1`)</span>
-  <span class="hljs-attr">priorityStep</span>: <span class="hljs-number">5</span>, <span class="hljs-comment">// Step size for automatic numbering (default is `5`)</span>
-  <span class="hljs-attr">rules</span>: [
-    <span class="hljs-comment">// Serve requests for &#x27;www.example.com&#x27; - will be priority 10000</span>
-    ListenerRulesExtension.hostHeader(<span class="hljs-string">&#x27;www.example.com&#x27;</span>),
-    <span class="hljs-comment">// Register the wildcard host header with the priority 39999</span>
-    ListenerRulesExtension.hostHeader(<span class="hljs-string">&#x27;*.example.com&#x27;</span>, {
-      <span class="hljs-attr">priority</span>: <span class="hljs-number">39999</span>,
-    }),
-  ],
-}));</code></pre>
+				<pre><code class="language-ts"><span style="color: #001080">serviceDescription</span><span style="color: #000000">.</span><span style="color: #795E26">add</span><span style="color: #000000">(</span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #267F99">ListenerRulesExtension</span><span style="color: #000000">({</span>
+<span style="color: #000000">  </span><span style="color: #001080">listener</span><span style="color: #000000">, </span><span style="color: #008000">// Your IApplicationListener</span>
+<span style="color: #000000">  </span><span style="color: #001080">priorityStart:</span><span style="color: #000000"> </span><span style="color: #098658">10000</span><span style="color: #000000">, </span><span style="color: #008000">// Starting priority number (default is `1`)</span>
+<span style="color: #000000">  </span><span style="color: #001080">priorityStep:</span><span style="color: #000000"> </span><span style="color: #098658">5</span><span style="color: #000000">, </span><span style="color: #008000">// Step size for automatic numbering (default is `5`)</span>
+<span style="color: #000000">  </span><span style="color: #001080">rules:</span><span style="color: #000000"> [</span>
+<span style="color: #000000">    </span><span style="color: #008000">// Serve requests for &#039;www.example.com&#039; - will be priority 10000</span>
+<span style="color: #000000">    </span><span style="color: #001080">ListenerRulesExtension</span><span style="color: #000000">.</span><span style="color: #795E26">hostHeader</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;www.example.com&#039;</span><span style="color: #000000">),</span>
+<span style="color: #000000">    </span><span style="color: #008000">// Register the wildcard host header with the priority 39999</span>
+<span style="color: #000000">    </span><span style="color: #001080">ListenerRulesExtension</span><span style="color: #000000">.</span><span style="color: #795E26">hostHeader</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;*.example.com&#039;</span><span style="color: #000000">, {</span>
+<span style="color: #000000">      </span><span style="color: #001080">priority:</span><span style="color: #000000"> </span><span style="color: #098658">39999</span><span style="color: #000000">,</span>
+<span style="color: #000000">    }),</span>
+<span style="color: #000000">  ],</span>
+<span style="color: #000000">}));</span>
+</code></pre>
 				<a href="#note-on-jsii-support" id="note-on-jsii-support" style="color: inherit; text-decoration: none;">
 					<h2>Note on JSII Support</h2>
 				</a>
@@ -168,10 +170,6 @@ npm install @wheatstalk/ecs-service-extension-listener-rules</code></pre>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
 				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
