@@ -2093,9 +2093,9 @@ concat-stream@^2.0.0:
     typedarray "^0.0.6"
 
 constructs@^3.2.0:
-  version "3.3.17"
-  resolved "https://registry.yarnpkg.com/constructs/-/constructs-3.3.17.tgz#dbe0d6f7fedc8936c961e4181b2fc9d711ecc0a0"
-  integrity sha512-kDRNCMlhPvheonRwFFy4BGo9njNs5PyvWKfWoqSSuPo2lDQsP9nygr2HaEHKHkMy30k8E6YJv+DbCWTVSZGX8Q==
+  version "3.3.18"
+  resolved "https://registry.yarnpkg.com/constructs/-/constructs-3.3.18.tgz#10d416b7eadff449a82c076698305ab98cbce70f"
+  integrity sha512-aoFeZLctXI17AYApAc9Ilg/kTY3m7e29VbxeGnNiKvrsj9+UyC1setKozYPxtxr1dVC0UTUrOEYdP1rIAVGffQ==
 
 contains-path@^0.1.0:
   version "0.1.0"
@@ -6309,9 +6309,9 @@ typedoc@beta:
     typedoc-default-themes "0.12.0-beta.10"
 
 typescript@^3.9.5:
-  version "3.9.8"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.9.8.tgz#7d937ba4e4044af7fa83d127b982f8f61ca816a4"
-  integrity sha512-nDbnFkUZZjkQ92qwKX+C+jtk4OGfU8H9toSEs3uAsl8cxLjG2sqQm6leF/pLWvm9FAEJ6KHkYMAbHYaY2ITeVg==
+  version "3.9.9"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.9.9.tgz#e69905c54bc0681d0518bd4d587cc6f2d0b1a674"
+  integrity sha512-kdMjTiekY+z/ubJCATUPlRDl39vXYiMV9iyeMuEuXZh2we6zz80uovNN2WlAxmmdE/Z/YQe+EbOEXB5RHEED3w==
 
 uglify-js@^3.1.4:
   version "3.12.7"
